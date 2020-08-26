@@ -7,6 +7,9 @@ powerData <- read.table(inputData, header = TRUE, stringsAsFactors = FALSE, sep 
 subData <- powerData[powerData$Date %in% c("1/2/2007","2/2/2007") ,]
 head(subData)
 
+# Get weekdays in English
+dev_null <- Sys.setlocale("LC_TIME", "english")
+
 # Filtering and segmenting the data
 datetime <- strptime(paste(subData$Date, subData$Time, sep=" "), "%d/%m/%Y %H:%M:%S") 
 globalActivePower <- as.numeric(subData$Global_active_power)
